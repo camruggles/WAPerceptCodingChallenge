@@ -65,6 +65,7 @@ class LineFinder:
             cv2.line(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
             cv2.imshow("final", img)
             cv2.waitKey(0)
+        cv2.imwrite("myanswer.png", img)
 
 
 
@@ -110,11 +111,11 @@ class LineFinder:
             mask = np.array(labels, dtype=np.uint8)
             mask[labels==label] = 255
             mask[labels != label] = 0
-            cv2.imshow("mask2", mask)
+            # cv2.imshow("mask2", mask)
             y,x = self.find_object_center(mask)
             S = 1
             self.center_map[(y-S):(y+S),(x-S):(x+S)] = 1
-            cv2.imshow("window", self.center_map*254)
+            # cv2.imshow("window", self.center_map*254)
         
         
     def create_orange_map(self):
